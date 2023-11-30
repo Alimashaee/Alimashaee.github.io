@@ -81,6 +81,12 @@ const againEventHandler = function () {
   highScore = document.querySelector('.highscore').textContent;
 };
 
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+      checkEvntHandler();
+  }
+});
+
 document.querySelector('.check').addEventListener('click', checkEvntHandler);
 
 document.querySelector('.again').addEventListener('click', againEventHandler);
