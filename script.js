@@ -6,8 +6,16 @@ document.querySelector('.number').textContent = 20;
 document.querySelector('.score').textContent = 23;
 document.querySelector('.guess').value = 21;
 */
+
+const updateHighScore = (newHighScore) => {
+  document.querySelector('.highscore').textContent = newHighScore;
+}
+
 let number = Math.trunc(Math.random() * 20) + 1;
-let highScore = 0;
+let highScore = Number(localStorage.getItem("highScore")) || 0;
+if (highScore) {
+  updateHighScore(highScore)
+} 
 
 function displayMessage(message) {
   document.querySelector('.message').textContent = message;
@@ -25,7 +33,8 @@ const checkEvntHandler = function () {
     document.querySelector('body').style.backgroundColor = '#60b347';
     if (highScore < score) {
       highScore = score;
-      document.querySelector('.highscore').textContent = highScore;
+      updateHighScore(highScore)
+      localStorage.setItem("highScore", String(highScore));
     }
   } else if (guess !== number) {
     if (score > 1) {
