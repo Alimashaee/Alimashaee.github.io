@@ -7,6 +7,10 @@ document.querySelector('.score').textContent = 23;
 document.querySelector('.guess').value = 21;
 */
 
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('.guess').focus();
+});
+
 const updateHighScore = (newHighScore) => {
   document.querySelector('.highscore').textContent = newHighScore;
 }
